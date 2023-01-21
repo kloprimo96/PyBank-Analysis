@@ -1,28 +1,38 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[6]:
 
+
+#Setup
 
 import os
 import csv
 
 
-# In[18]:
+# In[7]:
 
+
+#Import CSV File
 
 budget_data = os.path.join(".","budget_data.csv")
 
 results_to_output = os.path.join(".","budget_analysis.txt")
 
+#Set variables as zero for looping
+
 total_months = 0
 total_net = 0
+
+#Create lists
 
 net_change_list = []
 month_of_changes = []
 
 greatest = ["", 0]
 least = ["", 999999999999]
+
+#Loop through rows to capture changes
 
 with open (budget_data) as csvfile:
     reader = csv.reader(csvfile) 
@@ -56,10 +66,12 @@ with open (budget_data) as csvfile:
                      
                      
                  
-                     
+ #Monthly change                    
 
 net_monthly_average = sum(net_change_list) / len(net_change_list)
 
+
+#Output for txtfile
 
 output = (
     f"------------------\n"
@@ -73,7 +85,7 @@ output = (
     f"Greatest Decrease in Profits: {least[0]} (${least[1]})    "
 )
 
-print(pybank_analysis)
+print(output)
 
 with open(results_to_output, "w") as txt_file:
     txt_file.write(output)
