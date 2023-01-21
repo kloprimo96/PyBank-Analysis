@@ -1,22 +1,30 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[47]:
+# In[1]:
 
+
+#Setup
 
 import os
 import csv
+
+#Import CSV
 
 election_data = os.path.join(".","election_data.csv")
 
 results_to_output = os.path.join(".","pypoll_analysis.txt")
 
+#Set variables to zero
+
 total_votes = 0
 
+#Create lists
 
 candidate_votes = {}
 candidate_options = []
 
+#Loop through rows
 
 winning_candidate = ""
 winning_count = 0
@@ -43,6 +51,7 @@ with open (election_data) as csvfile:
         
         candidate_votes[candidate_name] += 1
             
+#Print results
 
 election_results = (
     f"Election Results\n"
@@ -76,6 +85,8 @@ with open(results_to_output, "w") as txt_file:
     winning_candidate_summary = (
         f"----------------------\n"
         f"Winner: {winning_candidate}\n")
+    
+    print(winning_candidate_summary)
     
     txt_file.write(winning_candidate_summary)
     
